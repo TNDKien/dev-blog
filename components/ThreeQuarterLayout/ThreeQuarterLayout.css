@@ -1,0 +1,11 @@
+.three-quarter-layout {
+  display: flex;
+}
+
+.main {
+  width: 75%;
+}
+
+.sidebar {
+  width: 25%;
+}
