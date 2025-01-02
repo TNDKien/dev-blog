@@ -1,35 +1,35 @@
 import Link from "next/link";
 import { storyblokEditable } from "@storyblok/react/rsc";
 
-const BlogTeaser = ({ article, className, imgClassName }) => {
+const BlogTeaser = ({
+  article,
+  className,
+  imgClassName,
+}: {
+  article: any;
+  className: string;
+  imgClassName: any;
+}) => {
   if (!article) {
-    console.error("Article data is missing in ArtikelTeaser");
+    console.error("Article data is missing in BlogTeaser");
     return null;
   }
 
   return (
-    <div className={`mr-6 ${className}`} {...storyblokEditable(article)}>
-      <img
-        className={`object-cover object-center w-full mb-8 ${imgClassName}`} // Use dynamic height
-        src={article.afbeelding?.filename || ""}
-        alt={article.afbeelding?.alt || "Image"}
-      />
-      <h2 className="h-12 mx-auto mb-8 text-xl font-semibold leading-none tracking-tighter text-black">
-        {article.titel || "Untitled"}
-      </h2>
-      <div className="mx-auto text-base leading-relaxed text-gray-500 line-clamp-3">
-        {article.subtitel || "No teaser available"}
+    <Link href={`/${article.slug}`}>
+      <div
+        className={`mr-6 ${className} transition-shadow duration-300 hover:shadow-lg`}
+        {...storyblokEditable(article)}
+      >
+        <img
+          className={` ${imgClassName}`}
+          src={article.afbeelding?.filename || ""}
+          alt={article.afbeelding?.alt || "Image"}
+        />
+        <h2 className="p-2 font-bold">{article.titel || "Untitled"}</h2>
+        <p className="p-2">{article.datum || "No teaser available"}</p>
       </div>
-      <div className="mt-4">
-        <Link
-          href={`/${article.slug}`}
-          className="inline-flex items-center mt-4 font-semibold text-red lg:mb-0 hover:text-neutral-600"
-          title="read more"
-        >
-          Lees meer »
-        </Link>
-      </div>
-    </div>
+    </Link>
   );
 };
 

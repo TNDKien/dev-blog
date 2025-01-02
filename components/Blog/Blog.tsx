@@ -3,7 +3,7 @@
 import { render } from "storyblok-rich-text-react-renderer";
 import { storyblokEditable } from "@storyblok/react/rsc";
 
-const Blog = ({ blok }) => {
+const Blog = ({ blok }: { blok: any }) => {
   return (
     <article
       className="relative flex flex-col justify-center items-center pt-4 lg:pt-8 font-sans"
@@ -16,6 +16,11 @@ const Blog = ({ blok }) => {
         </h1>
         <p className="pb-8 text-lg font-light text-black">{blok.subtitel}</p>
       </header>
+      {/* Metadata Section */}
+      <div className="flex  flex-col items-start font-semibold w-full pb-8 text-sm gap-2">
+        <span className=" text-gray-900">Author: Kien Dang</span>
+        <span>Latest update: {blok.datum || "Publicatie Datum"}</span>
+      </div>
       {/* Main Image */}
       <div className="w-full flex justify-center">
         <img
@@ -24,13 +29,7 @@ const Blog = ({ blok }) => {
           alt={blok.afbeelding.alt}
         />
       </div>
-      {/* Metadata Section */}
-      <div className="flex items-start flex-col sm:flex-row sm:justify-between w-full p-4 pb-8 lg:px-24 text-sm gap-4">
-        <div className="flex flex-col gap-2">
-          <span className="font-semibold text-gray-900">Kien Dang</span>
-          <span>{blok.datum || "Publicatie Datum"}</span>
-        </div>
-      </div>
+
       {/* Article Content */}
       <section className="font-serif max-w-[612px] mt-8 px-4 space-y-12 first-letter:font-sans first-letter:text-4xl first-letter:font-bold first-letter:text-red">
         {render(blok.content)}
