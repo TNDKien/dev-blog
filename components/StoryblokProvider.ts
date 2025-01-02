@@ -7,10 +7,14 @@ import {
 } from "@storyblok/react/rsc";
 import Page from "./page.component";
 import Feature from "./Feature/Feature";
+import BlogContainer from "./BlogContainer/BlogContainer";
+import BlogTeaser from "./BlogTeaser/BlogTeaser";
 
 const components = {
   page: Page,
   feature: Feature,
+  blogcontainer: BlogContainer,
+  blogteaser: BlogTeaser,
 };
 
 storyblokInit({

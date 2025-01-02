@@ -23,13 +23,12 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-64 bg-white border-r border-gray-200 p-4 space-y-4 h-screen overflow-y-auto">
+    <aside className="w-64 bg-white border-r border-gray-200 p-4 h-screen overflow-y-auto">
       <div className="mb-8">
         <div className="h-8 w-8 bg-red-500 rounded-full" />
       </div>
 
       <nav className="space-y-2">
-        {/* Existing sections */}
         <div>
           <button
             onClick={() => toggleSection("gettingStarted")}
