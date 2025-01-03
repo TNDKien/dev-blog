@@ -25,7 +25,11 @@ export default function Sidebar() {
   return (
     <aside className="w-64 bg-white border-r border-gray-200 p-4 h-screen overflow-y-auto">
       <div className="mb-8">
-        <div className="h-8 w-8 bg-red-500 rounded-full" />
+        <img
+          className="rounded-full w-16 h-16 object-cover"
+          src="/me.jpeg"
+          alt="Kien Dang"
+        />
       </div>
 
       <nav className="space-y-2">
@@ -162,10 +166,12 @@ export default function Sidebar() {
           </button>
           {openSections["3d"] && (
             <div className="ml-4 mt-1 space-y-1">
-              <div className="flex items-center px-2 py-1 text-gray-400">
-                Ripple Shader
-                <Lock className="w-3 h-3 ml-1" />
-              </div>
+              <Link
+                href="/blog/firstapp"
+                className="block px-2 py-1 text-gray-600 hover:text-gray-900"
+              >
+                First App
+              </Link>
               <div className="flex items-center px-2 py-1 text-gray-400">
                 Bulge Effect
                 <Lock className="w-3 h-3 ml-1" />

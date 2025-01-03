@@ -26,8 +26,16 @@ const BlogTeaser = ({
           src={article.afbeelding?.filename || ""}
           alt={article.afbeelding?.alt || "Image"}
         />
+        <p className="p-2 text-xs text-gray-500">
+          {article.datum
+            ? new Date(article.datum).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            : "Publicatie Datum"}
+        </p>
         <h2 className="p-2 font-bold">{article.titel || "Untitled"}</h2>
-        <p className="p-2">{article.datum || "No teaser available"}</p>
       </div>
     </Link>
   );
