@@ -51,7 +51,7 @@ const Blog = ({ blok }: { blok: any }) => {
         </div>
 
         {/* Article Content */}
-        <section className="mt-8 space-y-8">
+        <section className="mt-8">
           {render(blok.content, {
             nodeResolvers: {
               code_block: (children, props) => {
