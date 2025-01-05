@@ -170,7 +170,7 @@ export default function Sidebar() {
                 First App
               </Link>
               <Link
-                href="/3d/wave-on-scroll"
+                href="/blog/blog2"
                 className="block px-2 py-1 text-gray-600 hover:text-gray-900"
               >
                 3D Glass Effect
