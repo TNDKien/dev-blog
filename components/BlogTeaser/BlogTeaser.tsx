@@ -35,7 +35,8 @@ const BlogTeaser = ({
               })
             : "Publicatie Datum"}
         </p>
-        <h2 className="p-2 font-bold">{article.titel || "Untitled"}</h2>
+        <h2 className="p-2 font-bold">{article.titel}</h2>
+        <p className="text-xs p-2 text-gray-500">{article.subtitel}</p>
       </div>
     </Link>
   );

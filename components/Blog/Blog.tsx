@@ -9,7 +9,7 @@ const Blog = ({ blok }: { blok: any }) => {
       className="relative flex flex-col justify-center items-center pt-4 font-sans"
       {...storyblokEditable(blok)}
     >
-      <div className="container px-4 lg:px-0 max-w-2xl">
+      <div className="container py-12 max-w-2xl">
         {/* Header Section */}
         <header className="text-center">
           <h1 className="text-2xl mb-6 font-semibold text-black">
