@@ -64,7 +64,7 @@ export default function Sidebar() {
         </div>
 
         {/* Mouse section */}
-        <div>
+        {/* <div>
           <button
             onClick={() => toggleSection("mouse")}
             className="flex items-center justify-between w-full text-left px-2 py-1 hover:bg-gray-100 rounded"
@@ -118,10 +118,10 @@ export default function Sidebar() {
               </Link>
             </div>
           )}
-        </div>
+        </div> */}
 
         {/* Misc section */}
-        <div>
+        {/* <div>
           <button
             onClick={() => toggleSection("misc")}
             className="flex items-center justify-between w-full text-left px-2 py-1 hover:bg-gray-100 rounded"
@@ -149,7 +149,7 @@ export default function Sidebar() {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
 
         {/* 3D section */}
         <div>
@@ -172,32 +172,12 @@ export default function Sidebar() {
               >
                 First App
               </Link>
-              <div className="flex items-center px-2 py-1 text-gray-400">
-                Bulge Effect
-                <Lock className="w-3 h-3 ml-1" />
-              </div>
               <Link
                 href="/3d/wave-on-scroll"
                 className="block px-2 py-1 text-gray-600 hover:text-gray-900"
               >
-                3D Wave on Scroll
-              </Link>
-              <Link
-                href="/3d/glass-effect"
-                className="block px-2 py-1 text-gray-600 hover:text-gray-900"
-              >
                 3D Glass Effect
               </Link>
-              <Link
-                href="/3d/creative-404"
-                className="block px-2 py-1 text-gray-600 hover:text-gray-900"
-              >
-                Creative 404
-              </Link>
-              <div className="flex items-center px-2 py-1 text-gray-400">
-                3D Parallax Letters
-                <Lock className="w-3 h-3 ml-1" />
-              </div>
             </div>
           )}
         </div>
