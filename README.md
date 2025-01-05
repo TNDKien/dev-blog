@@ -1,14 +1,37 @@
-Working fork of royvz-dev's Next + Storyblok boilerplate. This fork contains custom CSS and a demo component that is being loaded in the visual editor.
+# Web Developer Blog
 
-## Notes
-* `npm run dev` gives you a local SSL certificatie for localhost so allow it please. Otherwise Storyblok's visual live editor won't work.
-* There is no `.env.local` or `.env` in this repository since it is in .gitignore. Please create it yourself and add the access token. Use the preview token for `.env.local` and the public token for `.env` when deploying 
+## About the Project
 
-## Changelog
+This is a web developer blog created as a second-year student at Fontys Hogeschool ICT during semester 3. The blog serves as a platform to share insights, tutorials, and experiences related to web development. It is built using **Next.js** and integrated with **Storyblok** as a headless CMS.
 
-### 2024.3
-- Removed [locale] folder since we're only working in 1 language
-- Moved Feature component and it's CSS to a folder conform best practices
-- Added [slug] folder with page.tsx. This file now is used for all pages _except_ Home
-- Home will use the page.tsx in the app folder
-- You can now use "Real Path" under the Config settings in Storyblok (just add a `/`) and homepage will now render under the root URL instead of /home
+## Features
+
+- 📝 **Dynamic Content Management**: Powered by Storyblok for flexible and intuitive content creation.
+- 🎨 **Custom Styling**: Tailored design using **Tailwind CSS**.
+- 🚀 **High Performance**: Optimized for speed and SEO.
+- 💡 **Developer-Oriented**: Focused on sharing knowledge, with code snippets and project showcases.
+
+## Technologies Used
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **CMS**: [Storyblok](https://www.storyblok.com/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Version Control**: [GitHub](https://github.com/)
+- **Hosting**: [Vercel](https://vercel.com/)
+
+## Structure
+
+The blog features:
+
+- **Home**: Overview of recent posts and highlights.
+- **Blog Posts**: Articles categorized by topics like Frontend Development, Design, Tools, and Best Practices.
+- **About**: A section to introduce the creator and their journey as a developer.
+- **Contact**: A form to connect with the creator for feedback, collaboration, or inquiries.
+
+## Author
+
+👨‍💻 **Kien**
+
+- Fontys Hogeschool ICT | Semester 3 Student
+- Wannabe Frontend Developer
+- [LinkedIn](https://www.linkedin.com/in/kien-dang-449887173/) | [Portfolio](https://kiendang.nl)
