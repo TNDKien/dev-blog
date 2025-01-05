@@ -7,9 +7,6 @@ import { useState } from "react";
 export default function Sidebar() {
   const [openSections, setOpenSections] = useState({
     gettingStarted: true,
-    courses: false,
-    article: false,
-    scroll: false,
     mouse: false,
     misc: false,
     "3d": false,

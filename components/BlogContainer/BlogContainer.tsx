@@ -70,8 +70,8 @@ const BlogContainer = ({ blok }: BlogContainerProps) => {
           <BlogTeaser
             article={article}
             key={article.slug}
-            className="w-64 h-auto flex-shrink-0 rounded-xl overflow-hidden"
-            imgClassName="w-full object-cover"
+            className="w-72 h-auto flex-shrink-0 rounded-xl overflow-hidden"
+            imgClassName="w-full h-40 object-cover"
           />
         ))}
       </div>
