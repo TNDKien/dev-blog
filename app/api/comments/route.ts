@@ -1,32 +1,10 @@
+import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
 
-const COMMENTS_FILE = path.join(process.cwd(), "data", "comments.json");
-
-type Comment = {
-  id: string;
-  articleId: string;
-  author: string;
-  content: string;
-  createdAt: string;
-};
-
-function getComments(): Comment[] {
-  if (!fs.existsSync(COMMENTS_FILE)) {
-    return [];
-  }
-  const fileContents = fs.readFileSync(COMMENTS_FILE, "utf8");
-  return JSON.parse(fileContents);
-}
-
-function saveComments(comments: Comment[]) {
-  const dirPath = path.dirname(COMMENTS_FILE);
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
-  fs.writeFileSync(COMMENTS_FILE, JSON.stringify(comments, null, 2));
-}
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_KEY!
+);
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
@@ -39,12 +17,16 @@ export async function GET(req: Request) {
     );
   }
 
-  const comments = getComments();
-  const filteredComments = comments.filter(
-    (comment) => comment.articleId === articleId
-  );
+  const { data, error } = await supabase
+    .from("comments")
+    .select("*")
+    .eq("articleId", articleId);
 
-  return NextResponse.json(filteredComments);
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data || []);
 }
 
 export async function POST(req: Request) {
@@ -57,17 +39,15 @@ export async function POST(req: Request) {
     );
   }
 
-  const comments = getComments();
-  const newComment: Comment = {
-    id: Date.now().toString(),
-    articleId,
-    author,
-    content,
-    createdAt: new Date().toISOString(),
-  };
+  const { data, error } = await supabase
+    .from("comments")
+    .insert([{ articleId, author, content }])
+    .select()
+    .single();
 
-  comments.push(newComment);
-  saveComments(comments);
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 
-  return NextResponse.json(newComment, { status: 201 });
+  return NextResponse.json(data || {}, { status: 201 });
 }
