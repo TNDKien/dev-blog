@@ -14,14 +14,14 @@ type Comment = {
   id: string;
   author: string;
   content: string;
-  createdAt: string;
+  createdat: string;
 };
 
 type CommentSectionProps = {
-  articleId: string;
+  articleid: string;
 };
 
-export function CommentSection({ articleId }: CommentSectionProps) {
+export function CommentSection({ articleid }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
   const [username, setUsername] = useState("");
@@ -35,7 +35,7 @@ export function CommentSection({ articleId }: CommentSectionProps) {
   const fetchComments = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/comments?articleId=${articleId}`);
+      const response = await fetch(`/api/comments?articleid=${articleid}`);
       if (!response.ok) throw new Error("Failed to fetch comments");
       const data = await response.json();
       setComments(data);
@@ -57,7 +57,7 @@ export function CommentSection({ articleId }: CommentSectionProps) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            articleId,
+            articleid,
             author: username,
             content: newComment,
           }),
@@ -107,7 +107,7 @@ export function CommentSection({ articleId }: CommentSectionProps) {
             <div>
               <div className="font-semibold">{comment.author}</div>
               <div className="text-sm text-gray-500">
-                {new Date(comment.createdAt).toLocaleString()}
+                {new Date(comment.createdat).toLocaleString()}
               </div>
               <p className="mt-1">{comment.content}</p>
             </div>
