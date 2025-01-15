@@ -8,11 +8,15 @@ import {
 import Page from "./page.component";
 import BlogContainer from "./BlogContainer/BlogContainer";
 import BlogTeaser from "./BlogTeaser/BlogTeaser";
+import ArticleContainer from "./ArticleContainer/ArticleContainer";
+import ArticleTeaser from "./ArticleTeaser/ArticleTeaser";
 
 const components = {
   page: Page,
   blogcontainer: BlogContainer,
   blogteaser: BlogTeaser,
+  articlecontainer: ArticleContainer,
+  articleteaser: ArticleTeaser,
 };
 
 storyblokInit({

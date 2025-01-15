@@ -55,8 +55,7 @@ const Blog = ({ blok }: { blok: any }) => {
           {render(blok.content, {
             nodeResolvers: {
               code_block: (children, props) => {
-                const detectedLanguage =
-                  props?.class?.replace("language-", "") || "javascript";
+                const detectedLanguage = props?.class?.replace("language-", "");
 
                 return (
                   <SyntaxHighlighter

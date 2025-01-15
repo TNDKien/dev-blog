@@ -51,6 +51,12 @@ export default function Sidebar() {
                 Introduction
               </Link>
               <Link
+                href="/articles"
+                className="block px-2 py-1 text-gray-600 hover:text-gray-900"
+              >
+                Articles
+              </Link>
+              <Link
                 href="/gallery"
                 className="block px-2 py-1 text-gray-600 hover:text-gray-900"
               >
