@@ -8,9 +8,9 @@ const supabase = createClient(
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
-  const articleId = url.searchParams.get("articleId");
+  const articleid = url.searchParams.get("articleid");
 
-  if (!articleId) {
+  if (!articleid) {
     return NextResponse.json(
       { error: "articleId query parameter is required" },
       { status: 400 }
@@ -20,7 +20,7 @@ export async function GET(req: Request) {
   const { data, error } = await supabase
     .from("comments")
     .select("*")
-    .eq("articleId", articleId);
+    .eq("articleId", articleid);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -30,9 +30,9 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  const { articleId, author, content } = await req.json();
+  const { articleid, author, content } = await req.json();
 
-  if (!articleId || !author || !content) {
+  if (!articleid || !author || !content) {
     return NextResponse.json(
       { error: "articleId, author, and content are required" },
       { status: 400 }
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
 
   const { data, error } = await supabase
     .from("comments")
-    .insert([{ articleId, author, content }])
+    .insert([{ articleid, author, content }])
     .select()
     .single();
 
