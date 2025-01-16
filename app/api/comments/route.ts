@@ -12,21 +12,30 @@ export async function GET(req: Request) {
 
   if (!articleid) {
     return NextResponse.json(
-      { error: "articleId query parameter is required" },
+      { error: "articleid query parameter is required" },
       { status: 400 }
     );
   }
 
-  const { data, error } = await supabase
-    .from("comments")
-    .select("*")
-    .eq("articleId", articleid);
+  try {
+    const { data, error } = await supabase
+      .from("comments")
+      .select("*")
+      .eq("articleid", articleid);
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    if (error) {
+      console.error("Supabase fetch error:", error.message);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json(data || []);
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    return NextResponse.json(
+      { error: "An unexpected error occurred" },
+      { status: 500 }
+    );
   }
-
-  return NextResponse.json(data || []);
 }
 
 export async function POST(req: Request) {
