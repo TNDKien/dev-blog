@@ -4,11 +4,6 @@ import { useState, useEffect } from "react";
 import { Button } from "@services/components/ui/button";
 import { Textarea } from "@services/components/ui/textarea";
 import { Input } from "@services/components/ui/input";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@services/components/ui/avatar";
 
 type Comment = {
   id: string;
@@ -80,30 +75,27 @@ export function CommentSection({ articleid }: CommentSectionProps) {
 
   return (
     <div className="mt-8">
-      <h2 className="text-2xl font-bold mb-4">Comments</h2>
+      <h4 className="text-lg font-bold mb-4">Comments</h4>
       <form onSubmit={handleSubmit} className="mb-6 space-y-4">
         <Input
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Your username"
-          className="mb-2"
+          className="mb-4"
         />
         <Textarea
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           placeholder="Add a comment..."
-          className="mb-2"
+          className="mb-4"
         />
-        <Button type="submit" disabled={isPosting}>
-          {isPosting ? "'Posting...'" : "'Post Comment'"}
+        <Button variant="default" size="default">
+          {isPosting ? "Posting..." : "Post Comment"}
         </Button>
       </form>
       <div className="space-y-4">
         {comments.map((comment) => (
           <div key={comment.id} className="flex space-x-4">
-            <Avatar>
-              <AvatarFallback>{comment.author[0]}</AvatarFallback>
-            </Avatar>
             <div>
               <div className="font-semibold">{comment.author}</div>
               <div className="text-sm text-gray-500">

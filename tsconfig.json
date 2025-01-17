@@ -19,7 +19,8 @@
       ],
       "@assets/*": [
         "assets/*"
-      ]
+      ],
+      "@lib/*": ["./lib/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
