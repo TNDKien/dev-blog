@@ -3,6 +3,8 @@ import { render } from "storyblok-rich-text-react-renderer";
 import { storyblokEditable } from "@storyblok/react/rsc";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { CommentSection } from "../../lib/components/comment-section";
+import Link from "next/link";
+import { ExternalLink, Github } from "lucide-react";
 
 const Blog = ({ blok }: { blok: any }) => {
   return (
@@ -41,6 +43,34 @@ const Blog = ({ blok }: { blok: any }) => {
             </span>
           </div>
         </div>
+
+        {/* Links Section */}
+        {(blok.repo?.url || blok.demo?.url) && (
+          <div className="flex gap-4 mb-8">
+            {blok.demo?.url && (
+              <Link
+                href={blok.demo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition-colors"
+              >
+                Live Demo
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Link>
+            )}
+            {blok.repo?.url && (
+              <Link
+                href={blok.repo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-md text-sm font-medium transition-colors"
+              >
+                Repository
+                <Github className="ml-2 h-4 w-4" />
+              </Link>
+            )}
+          </div>
+        )}
 
         {/* Main Image */}
         <div className="w-full flex justify-center">
