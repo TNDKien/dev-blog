@@ -52,7 +52,7 @@ const Home: NextPage = async () => {
               href="https://github.com/TNDKien"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 transition-colors"
             >
               <GithubIcon className="h-5 w-5" />
               <span>TNDKien</span>
