@@ -70,13 +70,13 @@ const Home: NextPage = async () => {
             my studies cover both design and development, I've found my passion
             lies more in front-end development.
           </p>
-          <p className="leading-relaxed text-gray-700">
+          <p className="leading-relaxed text-gray-700 dark:text-gray-300">
             In this blog, I share tutorials, insights, and experiences from my
             journey as a developer. You'll find posts organized by category in
             the sidebar, covering topics from basic concepts to advanced
             implementations.
           </p>
-          <p className="leading-relaxed text-gray-700">
+          <p className="leading-relaxed text-gray-700 dark:text-gray-300">
             I started this blog in December 2024 during my 3rd semester, and I'm
             excited to share my learning journey with you. Feel free to explore
             the tutorials and articles – I hope you find them helpful!
