@@ -32,7 +32,7 @@ const SidebarContext = createContext<[boolean, (open: boolean) => void]>([
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState<boolean | null>(null);
   const [openSections, setOpenSections] = useState({
     gettingStarted: true,
     mouse: false,
@@ -41,15 +41,9 @@ export default function Sidebar() {
   });
 
   useEffect(() => {
-    // Check initial theme
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
-    }
+    // Check initial theme on mount
+    const isDarkMode = document.documentElement.classList.contains("dark");
+    setIsDark(isDarkMode);
   }, []);
 
   const toggleTheme = () => {

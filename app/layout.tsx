@@ -38,6 +38,17 @@ export default async function RootLayout({
   return (
     <StoryblokProvider>
       <html lang="en" className="scroll-smooth">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+              } else {
+                document.documentElement.classList.remove('dark')
+              }
+            `,
+          }}
+        />
         <body className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
           <Sidebar />
           <main className="transition-all duration-300 min-h-screen p-4 sm:p-6 lg:p-8">

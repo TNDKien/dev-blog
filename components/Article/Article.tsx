@@ -21,7 +21,7 @@ const Blog = ({ blok }: { blok: any }) => {
           </p>
         </header>
 
-        {/* Metadata Section */}
+        {/* Author Section */}
         <div className="flex items-center w-full pb-8 text-sm gap-2">
           <img
             className="rounded-full w-16 h-16 object-cover ring-2 ring-gray-200 dark:ring-gray-700"
