@@ -31,10 +31,10 @@ const Home: NextPage = async () => {
           </div>
         </div>
         <div className="md:w-2/3 text-center md:text-left space-y-4">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
             Welcome to my blog!
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
             I'm Kien, and here I document my latest explorations in web
             development.
           </p>
@@ -43,7 +43,7 @@ const Home: NextPage = async () => {
               href="https://kiendang.nl"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500 transition-colors"
             >
               <Globe className="h-5 w-5" />
               <span>kiendang.nl</span>
@@ -62,9 +62,9 @@ const Home: NextPage = async () => {
       </div>
 
       {/* About Section */}
-      <div className="prose prose-sm sm:prose lg:prose-lg max-w-none">
-        <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 space-y-4 sm:space-y-6 border border-gray-100">
-          <p className="leading-relaxed text-gray-700 [&:not(:first-child)]:mt-6">
+      <div className="prose prose-sm sm:prose lg:prose-lg max-w-none dark:prose-invert">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 space-y-4 sm:space-y-6 border border-gray-100 dark:border-gray-700">
+          <p className="leading-relaxed text-gray-700 dark:text-gray-300 [&:not(:first-child)]:mt-6">
             I'm a second-year student at Fontys University of Applied Sciences,
             studying ICT & Media Design with a focus on web development. While
             my studies cover both design and development, I've found my passion

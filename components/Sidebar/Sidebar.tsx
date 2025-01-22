@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, Lock, Menu, X } from "lucide-react";
-import { useState, useContext, createContext } from "react";
+import { ChevronDown, Lock, Menu, X, Sun, Moon } from "lucide-react";
+import { useState, useContext, createContext, useEffect } from "react";
 
 const SidebarLink = ({
   href,
@@ -16,7 +16,7 @@ const SidebarLink = ({
   return (
     <Link
       href={href}
-      className="block px-2 py-1 text-gray-600 hover:text-gray-900"
+      className="block px-2 py-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
       onClick={() => setIsOpen(false)}
     >
       {children}
@@ -32,12 +32,36 @@ const SidebarContext = createContext<[boolean, (open: boolean) => void]>([
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const [openSections, setOpenSections] = useState({
     gettingStarted: true,
     mouse: false,
     misc: false,
     "3d": false,
   });
+
+  useEffect(() => {
+    // Check initial theme
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      setIsDark(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    }
+    setIsDark(!isDark);
+  };
 
   const toggleSection = (section: keyof typeof openSections) => {
     setOpenSections((prev) => ({
@@ -51,37 +75,46 @@ export default function Sidebar() {
       {/* Toggle Button - Fixed Position */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 left-4 z-50 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+        className="fixed top-4 left-4 z-50 p-2 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
         aria-label="Toggle Sidebar"
       >
         {isOpen ? (
-          <X className="w-6 h-6 text-gray-600" />
+          <X className="w-6 h-6 text-gray-600 dark:text-gray-300" />
         ) : (
-          <Menu className="w-6 h-6 text-gray-600" />
+          <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
         )}
       </button>
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-screen bg-white border-r border-gray-200 p-4 sm:p-6 w-[280px] sm:w-[320px] transition-transform duration-300 ease-in-out z-40 overflow-y-auto ${
+        className={`fixed top-0 left-0 h-screen bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 p-4 sm:p-6 w-[280px] sm:w-[320px] transition-transform duration-300 ease-in-out z-40 overflow-y-auto ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="mb-8 pt-14">
-          {" "}
-          {/* Added padding-top to account for toggle button */}
+        <div className="mb-8 pt-14 flex items-center justify-between">
           <img
             className="rounded-full w-16 h-16 object-cover"
             src="/me.jpeg"
             alt="Kien Dang"
           />
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {isDark ? (
+              <Sun className="w-5 h-5 text-yellow-500" />
+            ) : (
+              <Moon className="w-5 h-5 text-gray-600" />
+            )}
+          </button>
         </div>
 
-        <nav className="space-y-2">
+        <nav className="space-y-2 text-gray-900 dark:text-gray-100">
           <div>
             <button
               onClick={() => toggleSection("gettingStarted")}
-              className="flex items-center justify-between w-full text-left px-2 py-1 hover:bg-gray-100 rounded"
+              className="flex items-center justify-between w-full text-left px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
             >
               <span className="font-medium">General</span>
               <ChevronDown
@@ -102,7 +135,7 @@ export default function Sidebar() {
           <div>
             <button
               onClick={() => toggleSection("mouse")}
-              className="flex items-center justify-between w-full text-left px-2 py-1 hover:bg-gray-100 rounded"
+              className="flex items-center justify-between w-full text-left px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
             >
               <span className="font-medium">Mouse</span>
               <ChevronDown
@@ -113,7 +146,7 @@ export default function Sidebar() {
             </button>
             {openSections.mouse && (
               <div className="ml-4 mt-1 space-y-1">
-                <div className="flex items-center px-2 py-1 text-gray-400">
+                <div className="flex items-center px-2 py-1 text-gray-400 dark:text-gray-500">
                   Mouse Parallax Goes to Wonderland
                   <Lock className="w-3 h-3 ml-1" />
                 </div>
@@ -154,7 +187,7 @@ export default function Sidebar() {
           <div>
             <button
               onClick={() => toggleSection("3d")}
-              className="flex items-center justify-between w-full text-left px-2 py-1 hover:bg-gray-100 rounded"
+              className="flex items-center justify-between w-full text-left px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
             >
               <span className="font-medium">3D</span>
               <ChevronDown
