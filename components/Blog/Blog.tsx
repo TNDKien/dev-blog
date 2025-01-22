@@ -15,7 +15,7 @@ const Blog = ({ blok }: { blok: any }) => {
       <div className="container py-12 max-w-2xl">
         {/* Header Section */}
         <header className="text-center">
-          <h1 className="text-2xl mb-6 font-semibold text-black">
+          <h1 className="text-2xl mb-6 font-semibold text-black dark:text-white">
             {blok.titel}
           </h1>
           <p className="pb-8 text-lg font-light text-gray-500">
@@ -31,7 +31,7 @@ const Blog = ({ blok }: { blok: any }) => {
             alt="Kien Dang"
           />
           <div className="flex flex-col">
-            <span className="text-gray-900">Kien Dang</span>
+            <span className="text-gray-900 dark:text-white">Kien Dang</span>
             <span className="text-xs text-gray-500">
               {blok.datum
                 ? new Date(blok.datum).toLocaleDateString("en-US", {
