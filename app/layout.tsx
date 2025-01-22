@@ -38,9 +38,11 @@ export default async function RootLayout({
   return (
     <StoryblokProvider>
       <html>
-        <body className="flex h-screen">
+        <body>
           <Sidebar />
-          <main className="flex-1 p-4 overflow-y-auto">{children}</main>
+          <main className="transition-all duration-300 min-h-screen p-4 sm:p-6 lg:p-8">
+            {children}
+          </main>
         </body>
       </html>
     </StoryblokProvider>
