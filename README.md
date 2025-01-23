@@ -36,7 +36,7 @@ The blog features:
 1. Clone the repository
 
 ```bash
-git clone https://github.com/kien-dang/web-developer-blog.git
+git clone https://github.com/TNDKien/dev-blog.git
 ```
 
 2. Install dependencies
